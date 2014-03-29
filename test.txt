@@ -1,0 +1,7 @@
+<xml>
+        <ToUser><![CDATA[]]></ToUser>
+				<FromUser><![CDATA[630000282]]></FromUser>
+        <CreateTime>1395832075</CreateTime>
+        <MsgType><![CDATA[text]]></MsgType>
+        <Content><![CDATA[<a href="https://graph.renren.com/oauth/authorize?display=mobile&client_id=8da3d03b34794e0bb061a004056fff92&redirect_uri=http://page.kungg.com/App/index.php/Renren/reg_rrrest?renren_id=&response_type=code&scope=read_user_album+read_user_feed+status_update+admin_page+photo_upload">点击我注册</a>]]></Content>
+        </xml>

@@ -1,0 +1,77 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>公共主页 - 手机助手</title>
+    <link rel="shortcut icon" href="{:C('SITE_URL')}pub/favicon.ico" type="image/x-icon" />
+	<!-- Bootstrap css file v2.2.1 -->
+	<link rel="stylesheet" type="text/css" href="{:C('SITE_URL')}pub/bootstrap/css/bootstrap.css">
+
+	<!--[if lte IE 6]>
+	<!-- bsie css 补丁文件 -->
+	<link rel="stylesheet" type="text/css" href="{:C('SITE_URL')}pub/bootstrap/css/bootstrap-ie6.css">
+    <![endif]-->
+    <!--[if lte IE 7 or IE 8]>
+	<!-- bsie 额外的 css 补丁文件 -->
+	<link rel="stylesheet" type="text/css" href="{:C('SITE_URL')}pub/bootstrap/css/ie.css">
+	<![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{:C('SITE_URL')}pub/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<style>
+	a:hover{
+	TEXT-DECORATION:none;
+	}
+	</style>
+</head>
+<body data-target=".bs-docs-sidebar" data-spy="scroll">
+<div class="container pull-center">
+<div class="title" style="margin: 50px 0px 0px 0px;">
+<h1>公共主页手机助手</h1>
+<h2>设置页面</h2>
+</div>
+<hr />
+<div class="password">
+{:W('Form',array('url'=>C("SITE_URL").'index.php/User/setPassword','class'=>'form-inline'))}
+<input type="password" name="password-old" class="input-medium" style="height: 25px;" placeholder="旧密码" value="">
+<input type="password" name="password-new" class="input-medium" style="height: 25px;" placeholder="新密码" value="">
+<button type="submit" class="btn">修改密码</button>
+</form>
+</div>
+<hr />
+<eq name="isConnect" value="1">
+<div class="disconnect">
+<a href="{:C('site_url')}index.php/Renren/disconnect">解除绑定</a>
+</div>
+<hr/>
+</eq>
+<eq name="isConnect" value="0">
+<div class="connect">
+<h2>账号绑定</h2>
+<a href="https://graph.renren.com/oauth/authorize?display=page&client_id={:C('RENREN_APP_KEY')}&redirect_uri={:C('site_url')}index.php/{:C('RENREN_CALLBACK_TWICE')}&response_type=code&scope={:C('RENREN_SCOPE')}"><img src="http://wiki.dev.renren.com/mediawiki/images/a/a7/%E8%BF%9E%E6%8E%A5%E6%8C%89%E9%92%AE2_%E8%93%9D%E8%89%B2133x28.png" /></a>
+</div>
+<hr/>
+</eq>
+<div class="footer">
+<div class="user pull-center">
+<a href="{:C('SITE_URL')}/index.php/Index">首页</a>
+&nbsp;
+<a href="{:C('SITE_URL')}/index.php/Index/detail/">设置</a>
+&nbsp;
+<a href="{:C('SITE_URL')}/index.php/Index/logout/">退出</a>
+</div>
+<div class="link pull-center">
+<a href="http://page.renren.com/699235544/index" target="_blank">Contact&nbsp;US</a>
+</div>
+</div>
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<!-- Optional, bootstrap javascript library -->
+<script type="text/javascript" src="{:C('SITE_URL')}pub/bootstrap/js/bootstrap.js"></script>
+
+<!--[if lte IE 6]>
+<!-- bsie js 补丁只在IE6中才执行 -->
+<script type="text/javascript" src="{:C('SITE_URL')}pub/js/bootstrap-ie.js"></script>
+<![endif]-->
+</body>
+</html>
