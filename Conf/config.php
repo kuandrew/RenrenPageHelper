@@ -52,7 +52,7 @@ $config = array(
     /**
      * 公众平台
      */
-    //'WX_TOKEN'       => '90fdlmlwease233',
+    //'WX_TOKEN'       => '',
     'RENREN_TOKEN'   => '',
     
 );
