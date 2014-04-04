@@ -52,8 +52,13 @@ $config = array(
     /**
      * 公众平台
      */
+<<<<<<< HEAD
     //'WX_TOKEN'       => '90fdlmlwease233',
     'RENREN_TOKEN'   => 'ksldjf9JMsd93Asdf',
+=======
+    //'WX_TOKEN'       => '',
+    'RENREN_TOKEN'   => '',
+>>>>>>> e7c5a2b5518cca6501190b6a782697e75eaa907b
     
 );
 return array_merge($config, $wx_config);

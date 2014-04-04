@@ -1,1 +1,0 @@
-<?php if (!defined('THINK_PATH')) exit();?><h1>绑定成功，快用我们的公众账号试一试吧。</h1>
