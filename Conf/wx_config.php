@@ -1,7 +1,7 @@
 <?php
 $config = array(
 	'WX' => array(
-		'TOKEN' => '90fdlmlwease233',
+		'TOKEN' => '',
 		/*
 		目录格式：
 		x => array()
