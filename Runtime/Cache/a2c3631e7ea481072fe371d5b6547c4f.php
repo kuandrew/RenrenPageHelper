@@ -29,7 +29,7 @@
     <h2>你的人人账号是：<?php echo ($data->user->name); echo ($cache["username"]); ?></h2>
     <h2>你的人人ID是：<?php echo ($data->user->id); echo ($cache["renren_id"]); ?></h2>
     <h2>用户名</h2>
-    <input name="renren_id" style="display: none;" value="<?php echo ($data["renren_id"]); echo ($cache["renren_id"]); ?>" />
+    <input name="renren_id" style="display: none;" value="<?php echo ($data->user->id); echo ($cache["renren_id"]); ?>" />
     <input name="username" type="text" style="height:30px;" value="<?php echo ($data->user->name); echo ($cache["username"]); ?>" />
     <h2>邮箱（找回密码用得到哦）</h2>
     <input name="email" type="text" style="height:30px;" value="<?php echo ($cache["email"]); ?>" />

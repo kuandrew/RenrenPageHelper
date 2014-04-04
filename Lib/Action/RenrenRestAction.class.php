@@ -44,6 +44,10 @@ class RenrenRestAction extends Action{
             $this->$cache['name']();
             return;   
         }  //检测是不是页面跳转命令且不是新用户
+        if($data['isNew']){
+            $this->_menu();
+            return;
+        }
         $this->dir = $data['dir'];
         $this->post = $post;
         $this->dir_name = $data['name'];
@@ -75,13 +79,16 @@ class RenrenRestAction extends Action{
         $data[0] = C('RENREN_PUBLIC_TOKEN');
         $data[1] = $timestamp;
         $data[2] = $nonce;
-        sort($data,SORT_STRING);
+        sort($data,SORT_LOCALE_STRING);
         $result = $data[0].$data[1].$data[2];
+        //echo $result;
         return $result;
     }
     
     public function index(){
-        
+        if($this->type == 'activation'){
+            $this->_menu();
+        }        
     }
 
     public function _menu(){
@@ -97,7 +104,7 @@ class RenrenRestAction extends Action{
         $data = $rmodel->getHelp($this->dir);
         $rest = new RenrenRest($this->post['message']);
         $rest->send_text($data,$this->fromUser);
-        $result = $rmodel->changeDir($this->fromUser,$this->dir,0,$this->dir_name);
+        //$result = $rmodel->changeDir($this->fromUser,$this->dir,0,$this->dir_name);
         return;
     }
 
@@ -186,9 +193,10 @@ class RenrenRestAction extends Action{
     }
 
     public function _bind_unbind(){
+        $rmodel = D('Rrrest');
         $rest = new RenrenRest($this->post['message']);
         $rest->send_text("解绑功能正在开发啦。。。。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n亲，怎么能解绑呢？",$this->fromUser);
-        $rrrest->changeDir($this->fromUser,$this->dir,0,$this->dir_name);
+        $rmodel->changeDir($this->fromUser,$this->dir,0,$this->dir_name);
         return;
     }
 

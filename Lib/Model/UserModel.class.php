@@ -97,8 +97,8 @@ class UserModel extends Model{
         $data['email'] = $email;
         $data['weixin_id'] = $wx_id;
         $this->where($condition)->data($data)->save();
-        $this->where($condition)->find();
-        return $this->data['id'];
+        $data = $this->where($condition)->find();
+        return $data['id'];
     }
     
     
@@ -120,6 +120,12 @@ class UserModel extends Model{
         $condition['id'] = $id;
         $this->where($condition)->find();
         return $this->data['access_token'];
+    }
+    /*
+    *通过微信ID获取用户信息
+    */
+    public function getInfoByWX($wx_id){
+        return $this->where(array('weixin_id' => $wx_id))->find();
     }
     /**
      * 用于登录 log()
@@ -188,5 +194,7 @@ class UserModel extends Model{
         $data['renren_id'] = '';
         $this->where($condition)->data($data)->save();        
     }
+
+
 }
 ?>

@@ -23,13 +23,21 @@
 	</style>
 </head>
 <body data-target=".bs-docs-sidebar" data-spy="scroll">
-<div class="container pull-center"><div class="title" style="margin: 50px;"><h1>公共主页手机助手</h1></div>
+<div class="container pull-center"><div class="title" style="margin: 50px;"><h1>完成账号捆绑</h1></div>
 <div class="form">
-    <h2>有注册过手机助手吗？</h2>
-    <button class="btn btn-large btn-primary" onclick="yes()" style="margin: 10px;">&nbsp;&nbsp;有&nbsp;&nbsp;</button>
-    </br>
-    <button class="btn btn-large btn-primary" onclick="no()" >没有</button>
-    <h3>没有注册过我们网站的亲，请点“没有”。我们会先连接你的人人账号，然后补全注册信息就可以了。</h3>
+    <?php echo W('Form',array('url'=>C("SITE_URL").'index.php/User/reg_wx'));?>
+    <h2>你的人人账号是：<?php echo ($renren_name); ?></h2>
+    <h2>你的人人ID是：<?php echo ($renren_id); ?></h2>
+    <h2>用户名</h2>
+    <input name="renren_id" style="display: none;" value="<?php echo ($renren_id); ?>" />
+    <input name="username" type="text" style="height:30px;" value="<?php echo ($username); ?>" />
+    <h2>邮箱（找回密码用得到哦）</h2>
+    <input name="email" type="text" style="height:30px;"/>
+    <h2>密码</h2>
+    <input name="password" type="password" style="height: 30px;"/></br>
+    <input name="wx_id" style="display: none;" value="<?php echo ($wx_id); ?>" />
+    <input type="submit" class="btn btn-primary btn-large" style="margin: 10px 0px 0px 0px;" value="完成注册" />
+    </form>
 </div>
 </div>
 
@@ -41,13 +49,5 @@
 <!-- bsie js 补丁只在IE6中才执行 -->
 <script type="text/javascript" src="<?php echo C('SITE_URL');?>pub/js/bootstrap-ie.js"></script>
 <![endif]-->
-<script type="text/javascript">
-function yes(){
-    window.location.href='<?php echo C("SITE_URL");?>index.php/WeixinRest/bind_log?wx_id=<?php echo ($wx_id); ?>';
-}
-function no(){
-    window.location.href='https://graph.renren.com/oauth/authorize?display=page&client_id=<?php echo C('RENREN_APP_KEY');?>&redirect_uri=<?php echo C('site_url');?>index.php/<?php echo C('RENREN_CALLBACK');?>/reg_wx/<?php echo ($wx_id); ?>&response_type=code&scope=<?php echo C("RENREN_SCOPE");?>';
-}
-</script>
 </body>
 </html>

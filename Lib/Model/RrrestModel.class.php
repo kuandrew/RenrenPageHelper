@@ -51,7 +51,7 @@ class RrrestModel extends Model{
 		for($i = 0;$i < count($data);$i++){
 			$result = $result.'回复'.($i+1).'：'.$data[$i]['content']."\n";
 		}
-		$result = $result.'回复0：回到上级菜单';
+		if(count($cache) != 1)$result = $result.'回复0：回到上级菜单';
 		return $result;
 	}
 

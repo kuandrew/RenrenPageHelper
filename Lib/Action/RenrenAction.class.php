@@ -145,6 +145,29 @@ class RenrenAction extends Action{
         $this->display();
     }
 
+    public function bind_wx(){
+        $get = $this->_get();
+        if(!$get['code'] or count($get['_URL_']) < 3){
+            echo '没有获取到人人网的反馈，请退出重试';
+            return;
+        }
+        $wxid = $get['_URL_'][2];
+        $code = $get['code'];
+        $url = U($get['_URL_'][0].'/'.$get['_URL_'][1]).'/'.$get['_URL_'][2];
+        $renren = new Renren();
+        $data = $renren->getAccessToken($code,$url);
+        if(@$data->error){
+            echo '没有获取到人人网的反馈，请退出重试';
+            return;
+        }
+        M('user')->where(array('weixin_id' => $wxid))->data(array('isConnect' => 1,'access_token' => $data->access_token,'refresh_token' => $data->refresh_token,'renren_id' => $data->user->id))->save();
+        $user = M('user')->where(array('weixin_id' => $wxid))->find();
+        D('WeixinRest')->where(array('weixin_id' => $user['weixin_id']))->save(array('uid' => $user['id']));
+        D('WeixinRest')->changeDir($wxid,'',-2);
+        echo '绑定成功';
+        return;
+    }
+
 
     /*
     从人人公众号来的绑定
@@ -159,7 +182,7 @@ class RenrenAction extends Action{
         $username = base64_decode($username);
         $renren_id = $get['renren_id'];
         $code = $get['code'];
-        $url = U($get['_URL_'][0].'/'.$get['_URL_'][1]).'/'.$get['_URL_'][2];;
+        $url = U($get['_URL_'][0].'/'.$get['_URL_'][1]).'/'.$get['_URL_'][2];
         $renren = new Renren();
         $data = $renren->getAccessToken($code,$url,array('renren_id' => $renren_id));
         if(@$data->error){

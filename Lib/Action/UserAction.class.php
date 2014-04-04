@@ -157,6 +157,9 @@ class UserAction extends Action{
             $this->error('<script>alert("亲，don\'t be devil");</script>亲，don\'t be devil',C('site_url'));
             return;
         }
+        $wxmodel = D('WeixinRest');
+        $wxmodel->where(array('weixin_id' => $wx_id))->save(array('uid' => $id));
+        $wxmodel->changeDir($wx_id,'',-2);
         $crypt = new Crypt();
         $username = $crypt->encrypt($username,C('Secret_Key'));
         $password = sha1($password);

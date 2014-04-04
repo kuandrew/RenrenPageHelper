@@ -26,11 +26,13 @@ class Renren {
         if (!$code){
             return;
         }
-        if($redirect_uri && $arr){
+        if($arr){
             $url = C('ROOT_URL').$redirect_uri.'?';
             foreach ($arr as $key => $value) {
                 $url = $url.$key.'='.$value;
             }
+        }elseif($redirect_uri){
+            $url = C('ROOT_URL').$redirect_uri;
         }else{
             $url = CALLBACK;
         }

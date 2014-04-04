@@ -2,7 +2,7 @@
 class WeixinRest {
 
     public $type       = '';          //用户发来消息的类别
-    public $msg        = '';          //用户发来的消息
+    public $content    = '';          //用户发来的消息
     public $fromUser   = '';          //用户微信账号
     public $toUser     = '';          //本微信账号
     public $picURL     = '';          //上传图片的地址
@@ -19,7 +19,8 @@ class WeixinRest {
         $this->fromUser = iconv("UTF-8", "GB2312//IGNORE",$obj->FromUserName);
         $this->toUser   = iconv("UTF-8", "GB2312//IGNORE",$obj->ToUserName);
         $this->type     = iconv("UTF-8", "GB2312//IGNORE",$obj->MsgType);
-        $this->msg      = $obj->Content;//iconv("UTF-8", "GB2312//IGNORE",$obj->Content);
+        $this->picURL   = iconv("UTF-8", "GB2312//IGNORE",$obj->PicUrl);
+        $this->content  = $obj->Content;//iconv("UTF-8", "GB2312//IGNORE",$obj->Content);
         return $this;
     }
 

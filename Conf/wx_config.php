@@ -1,7 +1,7 @@
 <?php
 $config = array(
 	'WX' => array(
-		'TOKEN' => '',
+		'TOKEN' => '90fdlmlwease233',
 		/*
 		目录格式：
 		x => array()
@@ -24,7 +24,7 @@ $config = array(
 					),
 				2 => array(
 					'name' => '发图片',
-					'content' => '请先发一张图片给我，然后回复英文字母进行发布。',
+					'content' => '请先发一张图片给我，然后进行发布。',
 					'function' => '_photo',
 					),
 				),
@@ -39,14 +39,14 @@ $config = array(
 					'content' => '',
 					'function' => '_bind',
 					1 => array(
-						'name' => '未注册用户绑定',
-						'content' => '<a href="">点击我注册</a>',
-						'function' => '_reg',
+						'name' => '已经在小助手网站注册过',
+						'content' => "请输入小助手网站的用户名和密码\n格式：用户名#密码\n直接回复即可",
+						'function' => '_bind',
 						),
 					2 => array(
-						'name' => '已注册用户绑定',
-						'content' => "回复 “账号#密码” 后自动绑定\n不是人人网账号哦亲，是助手账号。",
-						'function' => '_bind',
+						'name' => '还没有注册过',
+						'content' => '<a href="">点击我绑定</a>',
+						'function' => '_reg',
 						),
 					),
 				2 => array(
@@ -57,11 +57,17 @@ $config = array(
 				),
 			3 => array(
 				'name' => '获取帮助',
-				'content' => '暂时没有帮助信息',
+				'content' => "首先，你需要到绑定账号哦。
+							\n然后，你就可以随意使用了。
+							\n如有疑问，请加我的人人 冉坤
+							\nkungg@kungg.com
+							\nhave fun & enjoy yourself
+							\n交流群：109948587 
+							\n回复0返回",
 				'function' => '_help',
 				),
 			),
 		),
-	);
+);
 return $config;
 ?>
